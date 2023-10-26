@@ -1,0 +1,9 @@
+.fundo{
+  background: url(../assets/imagens/Background.png);
+  background-size: cover;
+  min-height: 150vh;
+}
+
+.card{
+  padding: 2rem;
+}
