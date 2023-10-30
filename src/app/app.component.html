@@ -1,88 +1,22 @@
-<div class="fundo position-relative">
-<main>
+<div class="position-relative">
+  <main>
+    <div
+      class="card text-center w-50 position-absolute top-50 start-50 translate-middle p-5"
+    >
+      <div class="card-body">
+        <figure class="Logo">
+          <img src="../assets/imagens/Logo.png" alt="Logo da Indexa" />
+        </figure>
+      </div>
 
+      <app-form-contato></app-form-contato>
+      <app-lista-contatos></app-lista-contatos>
 
-  <div class="card text-center w-50 position-absolute top-50 start-50 translate-middle">
-    <div class="card-body">
-    <figure class="Logo">
-      <img src="../assets/imagens/Logo.png" alt="Logo da Indexa">
-    </figure>
-    <section class="border-bottom border-primary">
-      <a href="">Voltar</a>
-      <figure class="cabecalho_adicionar_contato">
-        <img src="../assets/imagens/adicionarContato.png" alt="Ilustração adicionar contato">
-        <h2 class="text-primary">Adicionar contato</h2>
-      </figure>
-  </section>
-      <form class="text-start">
-
-        <div class="mb-3">
-          <label for="inputNome" class="form-label fw-bold">Nome</label>
-          <input type="text" placeholder="Digite o nome do contato" class="form-control" id="inputNome" aria-describedby="nomeContato">
-        </div>
-
-        <div class="mb-3">
-          <label for="inputTelefone" class="form-label fw-bold">Telefone</label>
-          <input type="tel" placeholder="Digite o número do telefone" class="form-control" id="inputTelefone" aria-describedby="telefoneContato">
-          <button type="button" class="btn btn-outline-secondary">Adicionar novo número</button>
-        </div>
-
-
-        <div class="mb-3 border-bottom border-secondary">
-          <label for="inputEmail" class="form-label fw-bold">E-mail</label>
-          <input type="email" placeholder="Insira o endereço de e-mail do contato" class="form-control" id="inputEmail" aria-describedby="emailContato">
-          <button type="button" class="btn btn-outline-secondary">Adicionar novo e-mail</button>
-        </div>
-
-        <div class="mb-3">
-          <label for="inputAniversario" class="form-label fw-bold">Aniversário</label>
-          <input type="date" id="inputAniversario" class="form-control">
-        </div>
-
-        <div class="mb-3">
-          <label for="inputRedesSociais" class="form-label">Redes sociais</label>
-          <div class="input-group">
-            <span class="input-group-text" id="basic-addon1">http://</span>
-            <input type="text" placeholder="Adicione a URL da página" class="form-control" id="inputRedesSociais" aria-describedby="RedesSociaisContato">
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="textAreaObservacoes"> Observações</label>
-          <textarea class="form-control" placeholder="Coloque observações nesse espaço.  Exemplo: “Instrutora da academia “Nova Imagem”, amiga da Júlia”." id="textAreaObservacoes" style="height: 100px"></textarea>
-        </div>
-
-
-        <section>
-          <button type="button" class="btn btn-outline-primary">Cancelar</button>
-          <button type="button" class="btn btn-primary">Salvar contato</button>
-        </section>
-      </form>
     </div>
-
-    <table class="table table-borderless">
-      <thead class="border-bottom border-primary">
-        <tr class="text-primary fw-bold">
-          <th scope="col">Nome</th>
-          <th scope="col">Número</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><img src="../assets/Avatares/Aldo.png" alt="Foto do contato">  Aldo Cruz</td>
-          <td>83 995643270</td>
-          <td><img src="../assets/Icones/pencil-square.png" alt="Ícone de edição"></td>
-          <td><img src="../assets/Icones/trash.png" alt="Ícone de lixeira"></td>
-        </tr>
-      </tbody>
-    </table>
-
-
-  </div>
-</main>
-<footer class="position-absolute top-100 start-50 translate-middle text-primary">
-  <p>2023 © Desenvolvido por Alura | Projeto fictício sem fins comerciais.</p>
-</footer>
+  </main>
+  <footer
+    class="position-absolute start-50 translate-middle text-primary w-100 text-center"
+  >
+    <p>2023 © Desenvolvido por Alura | Projeto fictício sem fins comerciais.</p>
+  </footer>
 </div>
-
