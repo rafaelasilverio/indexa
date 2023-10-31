@@ -1,4 +1,4 @@
-<section class="border-bottom border-primary">
+<section class="mb-4 border-bottom border-primary">
   <section class="text-start">
     <a href="#">
       <img
@@ -16,8 +16,15 @@
   </figure>
 </section>
 
-<app-avatar-form></app-avatar-form>
 <form class="text-start">
+
+  <div class="mb-5 mt-5 text-center w-100 position-relative h-100 d-inline-block">
+    <div class="text-center border dotted-border w-25 position-absolute top-100 start-50 translate-middle mt-1">
+      <label for="avatar" class="form-label"> + <br> Adicione a <br> imagem do <br> contato </label>
+      <input type="file" class="form-control" id="avatar" accept="image/*" required hidden>
+    </div>
+  </div>
+
   <div class="mb-3">
     <label for="inputNome" class="form-label fw-bold">Nome</label>
     <input
@@ -26,6 +33,7 @@
       class="form-control"
       id="inputNome"
       aria-describedby="nomeContato"
+      [value]="contato.nome"
     />
   </div>
 
@@ -37,6 +45,7 @@
       class="form-control"
       id="inputTelefone"
       aria-describedby="telefoneContato"
+      [value]="contato.telefone"
     />
     <button type="button" class="btn btn-outline-secondary w-100 mt-3">
       Adicionar novo número
@@ -51,6 +60,7 @@
       class="form-control"
       id="inputEmail"
       aria-describedby="emailContato"
+      [value]="contato.email"
     />
     <button type="button" class="btn btn-outline-secondary w-100 mt-3 mb-4">
       Adicionar novo e-mail
@@ -59,7 +69,7 @@
 
   <div class="mb-3 position-relative">
     <label for="inputAniversario" class="form-label fw-bold">Aniversário</label>
-    <input type="text" placeholder="Data de nascimento" class="form-control" id="inputAniversario" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+    <input type="text" placeholder="Data de nascimento" class="form-control" id="inputAniversario" [value]="contato.aniversario" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
     <!-- <img src="../../../assets/Icones/icone-calendario.png" alt="ícone de calendário"> -->
   </div>
 
@@ -73,6 +83,7 @@
         class="form-control"
         id="inputRedesSociais"
         aria-describedby="RedesSociaisContato"
+        [value]="contato.redesSociais"
       />
     </div>
   </div>
@@ -84,15 +95,16 @@
       placeholder="Coloque observações nesse espaço.  Exemplo: “Instrutora da academia “Nova Imagem”, amiga da Júlia”."
       id="textAreaObservacoes"
       style="height: 100px"
+      [value]="contato.obs"
     ></textarea>
   </div>
 
   <section class="text-center p-2 row gx-4">
     <div class="col">
-      <button type="button" class="btn btn-outline-primary w-100">Cancelar</button>
+      <button (click)="cancelar()" type="button" class="btn btn-outline-primary w-100">Cancelar</button>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-primary w-100">Salvar contato</button>
+      <button (click)="criarContato()"  type="button" class="btn btn-primary w-100">Salvar contato</button>
     </div>
   </section>
 
