@@ -17,12 +17,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let contato of listaContatos">
       <td>
-        <img src="../assets/Avatares/Aldo.png" alt="Foto do contato" />
-        Aldo Cruz
+        <img [src]="contato.foto" alt="Foto do contato" style="width: 25px; height: 25px; object-fit: cover;"/>
+        {{ contato.nome }}
       </td>
-      <td>83 995643270</td>
+      <td> {{ contato.telefone }}</td>
       <td>
         <img
           src="../assets/Icones/pencil-square.png"

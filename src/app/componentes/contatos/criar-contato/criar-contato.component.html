@@ -16,12 +16,12 @@
   </figure>
 </section>
 
-<form class="text-start">
+<form class="text-start" (ngSubmit)="onSubmit()">
 
   <div class="mb-5 mt-5 text-center w-100 position-relative h-100 d-inline-block">
     <div class="text-center border dotted-border w-25 position-absolute top-100 start-50 translate-middle mt-1">
-      <label for="avatar" class="form-label"> + <br> Adicione a <br> imagem do <br> contato </label>
-      <input type="file" class="form-control" id="avatar" accept="image/*" required hidden>
+      <label for="foto" class="form-label"> + <br> Adicione a <br> imagem do <br> contato </label>
+      <input type="file" class="form-control" id="foto" accept="image/*" (change)="onFileSelected($event)" required hidden>
     </div>
   </div>
 
@@ -104,8 +104,21 @@
       <button (click)="cancelar()" type="button" class="btn btn-outline-primary w-100">Cancelar</button>
     </div>
     <div class="col">
-      <button (click)="criarContato()"  type="button" class="btn btn-primary w-100">Salvar contato</button>
+      <button type="submit" class="btn btn-primary w-100">Salvar contato</button>
     </div>
   </section>
 
 </form>
+
+<!-- <ul class="list-unstyled mt-5">
+  <li class="mb-2" *ngFor="let contato of listaContatos">
+    <div class="d-flex align-items-center">
+      <img [src]="contato.foto" alt="avatar" class="rounded-circle me-2"
+        style="width: 50px; height: 50px; object-fit: cover;">
+      <span>{{ contato.nome }}</span>
+    </div>
+  </li>
+</ul> -->
+
+
+
