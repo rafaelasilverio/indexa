@@ -1,39 +1,50 @@
-<section class="mb-4 border-bottom border-primary">
-  <section class="text-start">
-    <a href="#">
-      <img
-        src="../../../assets/Icones/seta-esquerda.png"
-        alt="ícone de seta para a esquerda"
-      />Voltar</a
-    >
-  </section>
-  <figure class="cabecalho_adicionar_contato">
-    <img
-      src="../assets/imagens/adicionar-contato.png"
-      alt="Ilustração adicionar contato"
-    />
-    <h2 class="text-primary">Adicionar contato</h2>
-  </figure>
-</section>
+<app-banner
+  imagem="../assets/imagens/adicionar-contato.png"
+  textoAlt="Ilustração adicionar contato"
+  texto="Adicionar contato"
+></app-banner>
 
 <form class="text-start" (ngSubmit)="onSubmit()">
+  <div
+    class="mb-5 mt-5 text-center w-100 position-relative h-100 d-inline-block"
+  >
+    <div
+      class="text-center border dotted-border p-3 position-absolute top-100 start-50 translate-middle mt-4"
+    >
 
-  <div class="mb-5 mt-5 text-center w-100 position-relative h-100 d-inline-block">
-    <div class="text-center border dotted-border w-25 position-absolute top-100 start-50 translate-middle mt-1">
-      <label for="foto" class="form-label"> + <br> Adicione a <br> imagem do <br> contato </label>
-      <input type="file" class="form-control" id="foto" accept="image/*" (change)="onFileSelected($event)" required hidden>
+      <label for="foto" class="form-label" *ngIf="contato.foto == '', else fotoContato">
+        + <br />
+        Adicione a <br />
+        imagem do <br />
+        contato
+      </label>
+      <ng-template #fotoContato>
+        <label for="foto" class="form-label">
+           <img [src]="contato.foto" alt="imagem selecionada do contato" style="width: 100px; height: 100px; object-fit: cover;">
+        </label>
+      </ng-template>
+      <input
+        type="file"
+        class="form-control"
+        id="foto"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+        required
+        hidden
+      />
     </div>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 mt-5">
     <label for="inputNome" class="form-label fw-bold">Nome</label>
     <input
       type="text"
       placeholder="Digite o nome do contato"
       class="form-control"
       id="inputNome"
+      name="nome"
       aria-describedby="nomeContato"
-      [value]="contato.nome"
+      [(ngModel)]="contato.nome"
     />
   </div>
 
@@ -44,8 +55,9 @@
       placeholder="Digite o número do telefone"
       class="form-control"
       id="inputTelefone"
+      name="telefone"
       aria-describedby="telefoneContato"
-      [value]="contato.telefone"
+      [(ngModel)]="contato.telefone"
     />
     <button type="button" class="btn btn-outline-secondary w-100 mt-3">
       Adicionar novo número
@@ -59,17 +71,27 @@
       placeholder="Insira o endereço de e-mail do contato"
       class="form-control"
       id="inputEmail"
+      name="email"
       aria-describedby="emailContato"
-      [value]="contato.email"
+      [(ngModel)]="contato.email"
     />
     <button type="button" class="btn btn-outline-secondary w-100 mt-3 mb-4">
       Adicionar novo e-mail
     </button>
   </div>
 
-  <div class="mb-3 position-relative">
+  <div class="mb-3 position-relative w-75">
     <label for="inputAniversario" class="form-label fw-bold">Aniversário</label>
-    <input type="text" placeholder="Data de nascimento" class="form-control" id="inputAniversario" [value]="contato.aniversario" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+    <input
+      type="text"
+      placeholder="Data de nascimento"
+      class="form-control"
+      id="inputAniversario"
+      name="aniversario"
+      [(ngModel)]="contato.aniversario"
+      onfocus="(this.type='date')"
+      onblur="if(this.value==''){this.type='text'}"
+    />
     <!-- <img src="../../../assets/Icones/icone-calendario.png" alt="ícone de calendário"> -->
   </div>
 
@@ -82,8 +104,9 @@
         placeholder="Adicione a URL da página"
         class="form-control"
         id="inputRedesSociais"
+        name="redesSociais"
         aria-describedby="RedesSociaisContato"
-        [value]="contato.redesSociais"
+        [(ngModel)]="contato.redesSociais"
       />
     </div>
   </div>
@@ -94,31 +117,30 @@
       class="form-control"
       placeholder="Coloque observações nesse espaço.  Exemplo: “Instrutora da academia “Nova Imagem”, amiga da Júlia”."
       id="textAreaObservacoes"
+      name="obs"
       style="height: 100px"
-      [value]="contato.obs"
+      [(ngModel)]="contato.obs"
     ></textarea>
   </div>
 
   <section class="text-center p-2 row gx-4">
     <div class="col">
-      <button (click)="cancelar()" type="button" class="btn btn-outline-primary w-100">Cancelar</button>
+      <button
+        (click)="cancelar()"
+        type="button"
+        class="btn btn-outline-primary w-100"
+      >
+        Cancelar
+      </button>
     </div>
     <div class="col">
-      <button type="submit" class="btn btn-primary w-100">Salvar contato</button>
+      <button type="submit" class="btn btn-primary w-100">
+        Salvar contato
+      </button>
     </div>
   </section>
-
 </form>
 
-<!-- <ul class="list-unstyled mt-5">
-  <li class="mb-2" *ngFor="let contato of listaContatos">
-    <div class="d-flex align-items-center">
-      <img [src]="contato.foto" alt="avatar" class="rounded-circle me-2"
-        style="width: 50px; height: 50px; object-fit: cover;">
-      <span>{{ contato.nome }}</span>
-    </div>
-  </li>
-</ul> -->
 
-
+<app-listar-contatos [listaContatos]="listaContatos"></app-listar-contatos>
 

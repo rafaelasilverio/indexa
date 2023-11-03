@@ -1,22 +1,13 @@
 <div class="position-relative">
   <main>
     <div
-      class="card text-center w-50 position-absolute top-50 start-50 translate-middle p-5"
+      class="card text-center w-50 position-absolute top-50 start-50 translate-middle card-principal"
     >
-      <div class="card-body">
-        <figure class="Logo">
-          <img src="../assets/imagens/Logo.png" alt="Logo da Indexa" />
-        </figure>
-      </div>
-
+    <!-- transformamos esse card de fundo em componente também? -->
+      <app-cabecalho></app-cabecalho>
       <app-criar-contato></app-criar-contato>
-      <!-- <app-listar-contatos></app-listar-contatos> -->
 
     </div>
   </main>
-  <footer
-    class="position-absolute start-50 translate-middle text-primary w-100 text-center"
-  >
-    <p>2023 © Desenvolvido por Alura | Projeto fictício sem fins comerciais.</p>
-  </footer>
+  <app-rodape></app-rodape>
 </div>

@@ -1,12 +1,8 @@
-<section class="border-bottom border-primary mt-5">
-  <figure>
-    <img
-      src="../assets/imagens/lista-contatos.png"
-      alt="Ilustração"
-    />
-    <h2 class="text-primary">Organize, conecte, simplifique!</h2>
-  </figure>
-</section>
+<app-banner
+  imagem="../assets/imagens/lista-contatos.png"
+  textoAlt="Ilustração"
+  texto="Organize, conecte, simplifique!"
+></app-banner>
 
 <table class="table table-borderless">
   <thead class="border-bottom border-primary">
@@ -16,22 +12,34 @@
       <th scope="col"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="listaContatos.length > 0; else nenhumContato">
     <tr *ngFor="let contato of listaContatos">
       <td>
-        <img [src]="contato.foto" alt="Foto do contato" style="width: 25px; height: 25px; object-fit: cover;"/>
+        <img
+          [src]="contato.foto"
+          alt="Foto do contato"
+          style="width: 25px; height: 25px; object-fit: cover"
+        />
         {{ contato.nome }}
       </td>
-      <td> {{ contato.telefone }}</td>
+      <td>{{ contato.telefone }}</td>
       <td>
-        <img
-          src="../assets/Icones/pencil-square.png"
-          alt="Ícone de edição"
-        />
+        <button class="btn" (click)="editarContato()">
+          <img src="../assets/Icones/pencil-square.png" alt="Ícone de edição" />
+        </button>
       </td>
       <td>
-        <img src="../assets/Icones/trash.png" alt="Ícone de lixeira" />
+        <button class="btn" (click)="excluirContato()">
+          <img src="../assets/Icones/trash.png" alt="Ícone de lixeira" />
+        </button>
       </td>
     </tr>
   </tbody>
+  <ng-template #nenhumContato>
+    <tbody>
+      <tr>
+        <td colspan="3">Nenhum contato cadastrado!</td>
+      </tr>
+    </tbody>
+  </ng-template>
 </table>

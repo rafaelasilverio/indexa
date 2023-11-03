@@ -1,5 +1,5 @@
 export interface Contato {
-  id: number;
+  id?: number;
   foto: string | ArrayBuffer;
   nome: string;
   telefone: string;

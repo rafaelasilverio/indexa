@@ -4,21 +4,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AvatarFormComponent } from './componentes/avatar-form/avatar-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CriarContatoComponent } from './componentes/contatos/criar-contato/criar-contato.component';
 import { ListarContatosComponent } from './componentes/contatos/listar-contatos/listar-contatos.component';
+import { BannerComponent } from './componentes/banner/banner.component';
+import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
+import { RodapeComponent } from './componentes/rodape/rodape.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AvatarFormComponent,
     CriarContatoComponent,
-    ListarContatosComponent
+    ListarContatosComponent,
+    BannerComponent,
+    CabecalhoComponent,
+    RodapeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Contato } from 'src/app/interfaces/type';
 
 @Component({
@@ -6,7 +6,16 @@ import { Contato } from 'src/app/interfaces/type';
   templateUrl: './listar-contatos.component.html',
   styleUrls: ['./listar-contatos.component.css']
 })
-export class ListarContatosComponent {
-  listaContatos: Contato[] = [];
+export class ListarContatosComponent{
 
+
+  @Input() listaContatos: Contato[] = [];
+
+  excluirContato(){
+    alert(`excluir`);
+  }
+
+  editarContato(){
+    alert(`editar`);
+  }
 }

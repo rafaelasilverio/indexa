@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Contato } from 'src/app/interfaces/type';
 
 @Component({
@@ -6,13 +7,20 @@ import { Contato } from 'src/app/interfaces/type';
   templateUrl: './criar-contato.component.html',
   styleUrls: ['./criar-contato.component.css'],
 })
-export class CriarContatoComponent {
+export class CriarContatoComponent implements OnInit{
+
+  constructor(private formBuilder: FormBuilder){}
+
+  formulario!: FormGroup;
+
+  ngOnInit(): void {
+    
+  }
 
   contato: Contato = {
-    id: 0,
     foto: '',
-    nome: 'raimundinha',
-    telefone: '1233667899',
+    nome: '',
+    telefone: '',
     email: '',
     aniversario: '',
     redesSociais: '',
@@ -36,34 +44,18 @@ export class CriarContatoComponent {
   }
 
   onSubmit() {
-
-    console.log('submetido 1');
-    // this.contato = {
-    //   id: 0,
-    //   foto: '',
-    //   nome: '',
-    //   telefone: '',
-    //   email: '',
-    //   aniversario: '',
-    //   redesSociais: '',
-    //   obs: ''
-    // };
-      this.listaContatos.push({ ...this.contato });
-      this.contato = {
-        id: 0,
-        foto: '',
-        nome: '',
-        telefone: '',
-        email: '',
-        aniversario: '',
-        redesSociais: '',
-        obs: ''
-      };
-      console.log('submetido 2');
-
-
+    this.listaContatos.push({ ...this.contato });
+    this.contato = {
+      id: 0,
+      foto: '',
+      nome: '',
+      telefone: '',
+      email: '',
+      aniversario: '',
+      redesSociais: '',
+      obs: '',
+    };
   }
-
 
   cancelar() {
     this.contato = {
@@ -74,7 +66,7 @@ export class CriarContatoComponent {
       email: '',
       aniversario: '',
       redesSociais: '',
-      obs: ''
+      obs: '',
     };
   }
 }

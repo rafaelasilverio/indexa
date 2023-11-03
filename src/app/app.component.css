@@ -1,14 +1,12 @@
 main{
   background: url(../assets/imagens/Background.png);
   background-size: cover;
-  min-height: 300vh;
+  min-height: 250vh;
 }
 
-.card{
-  padding: 2rem;
+.card-principal{
+  padding: 10rem;
+  border-radius: 20px;
+  height: fit-content;
 }
 
-footer
-{
-  top: 98%;
-}
