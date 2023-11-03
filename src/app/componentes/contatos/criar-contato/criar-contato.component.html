@@ -4,7 +4,7 @@
   texto="Adicionar contato"
 ></app-banner>
 
-<form class="text-start" (ngSubmit)="onSubmit()">
+<form class="text-start" #formulario="ngForm" (ngSubmit)="onSubmit(formulario)" novalidate>
   <div
     class="mb-5 mt-5 text-center w-100 position-relative h-100 d-inline-block"
   >
@@ -45,7 +45,11 @@
       name="nome"
       aria-describedby="nomeContato"
       [(ngModel)]="contato.nome"
+      required
+      minlength="3"
     />
+    <span class="text-danger fs-6 fw-lighter" *ngIf="formulario.controls['nome']?.errors?.['required'] && formulario.controls['nome'].touched">O campo de nome precisa ser preenchido</span>
+    <span class="text-danger fs-6 fw-lighter" *ngIf="formulario.controls['nome']?.errors?.['minlength'] && formulario.controls['nome'].touched">O nome deve ter pelo menos 3 caracteres</span>
   </div>
 
   <div class="mb-3">
@@ -58,7 +62,11 @@
       name="telefone"
       aria-describedby="telefoneContato"
       [(ngModel)]="contato.telefone"
+      required
+      pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"
     />
+    <span class="text-danger fs-6 fw-lighter" *ngIf="formulario.controls['telefone']?.errors?.['required'] && formulario.controls['telefone'].touched">O campo de telefone precisa ser preenchido</span>
+    <span  class="text-danger fs-6 fw-lighter" *ngIf="formulario.controls['telefone']?.errors?.['pattern'] && formulario.controls['telefone'].touched">Insira um telefone válido</span>
     <button type="button" class="btn btn-outline-secondary w-100 mt-3">
       Adicionar novo número
     </button>
@@ -74,7 +82,9 @@
       name="email"
       aria-describedby="emailContato"
       [(ngModel)]="contato.email"
+      email
     />
+    <!-- pensei em ciar uma diretiva de validação pra impedir data > que o dia atual, mas fiquei com receio de deixar o conteúdo muito complexo pra esse momento-->
     <button type="button" class="btn btn-outline-secondary w-100 mt-3 mb-4">
       Adicionar novo e-mail
     </button>
@@ -92,6 +102,7 @@
       onfocus="(this.type='date')"
       onblur="if(this.value==''){this.type='text'}"
     />
+    <span class="text-danger fs-6 fw-lighter" *ngIf="formulario.controls['aniversario']?.errors?.['required'] && formulario.controls['aniversario'].touched">Insira uma data válida</span>
     <!-- <img src="../../../assets/Icones/icone-calendario.png" alt="ícone de calendário"> -->
   </div>
 
@@ -134,7 +145,7 @@
       </button>
     </div>
     <div class="col">
-      <button type="submit" class="btn btn-primary w-100">
+      <button type="submit" class="btn btn-primary w-100" [disabled]="!formulario.valid">
         Salvar contato
       </button>
     </div>

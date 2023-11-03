@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Contato } from 'src/app/interfaces/type';
 
 @Component({
@@ -7,15 +7,9 @@ import { Contato } from 'src/app/interfaces/type';
   templateUrl: './criar-contato.component.html',
   styleUrls: ['./criar-contato.component.css'],
 })
-export class CriarContatoComponent implements OnInit{
+export class CriarContatoComponent{
 
-  constructor(private formBuilder: FormBuilder){}
-
-  formulario!: FormGroup;
-
-  ngOnInit(): void {
-    
-  }
+  constructor(){}
 
   contato: Contato = {
     foto: '',
@@ -43,18 +37,22 @@ export class CriarContatoComponent implements OnInit{
     }
   }
 
-  onSubmit() {
-    this.listaContatos.push({ ...this.contato });
-    this.contato = {
-      id: 0,
-      foto: '',
-      nome: '',
-      telefone: '',
-      email: '',
-      aniversario: '',
-      redesSociais: '',
-      obs: '',
-    };
+  onSubmit(formulario: NgForm) {
+    if(formulario.valid){
+      this.listaContatos.push({ ...this.contato });
+      this.contato = {
+        id: 0,
+        foto: '',
+        nome: '',
+        telefone: '',
+        email: '',
+        aniversario: '',
+        redesSociais: '',
+        obs: '',
+      };
+    } else {
+      console.log(formulario.controls)
+    }
   }
 
   cancelar() {
