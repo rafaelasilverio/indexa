@@ -50,9 +50,7 @@ export class CriarContatoComponent{
         redesSociais: '',
         obs: '',
       };
-    } else {
-      console.log(formulario.controls)
-    }
+    } 
   }
 
   cancelar() {
